@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductList from './components/ProductList/ProductList';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //указываем что роутинг юулет в браузере 
+    <BrowserRouter>
+    {/* header будет на всех ваших страницах */}
+     <Header />
+     {/* для переклюяения роутов  */}
+      <Routes>
+        {/* сами роуты */}
+        <Route path="/" element={<ProductList />} />
+        <Route path="/add-product" element={<h1>Add Product</h1>}/>
+        <Route path="/edit-product" element={<h1>Edit Product</h1>}/>
+        <Route path="/contacts" element={<h1>Contacts</h1>}/>
+        <Route path="/about-us" element={<h1>About Us</h1>}/>
+      </Routes>
+      {/* футер будет на всх страницах */}
+      <h1>Footer</h1>
+    </BrowserRouter>
   );
-}
+};
 
-export default App;
+export default App;  
